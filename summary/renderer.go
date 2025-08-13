@@ -56,6 +56,11 @@ func (r *AlertsHeaderHTMLRenderer) renderAlertsHeader(w util.BufWriter, source [
             icon, ok := r.Icons[kind]
             if ok {
                 w.WriteString(icon)
+            } else {
+                icon, ok = r.Icons["note"]
+                if ok {
+                    w.WriteString(icon)
+                }
             }
             if _, ok := node.AttributeString("title"); ok {
                 // do nothing
