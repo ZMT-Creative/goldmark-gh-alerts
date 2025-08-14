@@ -76,11 +76,13 @@ func (b *alertParser) Open(parent gast.Node, reader text.Reader, pc parser.Conte
 
 	kind := match[1]
 	closed := match[2]
+    title := match[3]
 
 	alert := NewAlerts()
 
 	alert.SetAttributeString("kind", kind)
 	alert.SetAttributeString("closed", len(closed) != 0)
+	alert.SetAttributeString("title", title)
 
 	i := strings.Index(string(line), "]")
 	reader.Advance(i)
