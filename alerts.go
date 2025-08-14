@@ -8,13 +8,12 @@ import (
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/util"
 
-	"github.com/ZMT-Creative/goldmark-gh-alerts/pkg/body"
-	"github.com/ZMT-Creative/goldmark-gh-alerts/pkg/details"
-	"github.com/ZMT-Creative/goldmark-gh-alerts/pkg/summary"
+	alertParser "github.com/ZMT-Creative/goldmark-gh-alerts/internal/parser"
+	alertRenderer "github.com/ZMT-Creative/goldmark-gh-alerts/internal/renderer"
 )
 
 type GhAlerts struct {
-	summary.Icons
+	alertRenderer.Icons
 }
 
 // Meta is a extension for the goldmark.
@@ -24,15 +23,15 @@ var GhAlertsExtension = &GhAlerts{}
 func (e *GhAlerts) Extend(m goldmark.Markdown) {
 	m.Parser().AddOptions(
 		parser.WithBlockParsers(
-			util.Prioritized(details.NewAlertsParser(), 799),
-			util.Prioritized(summary.NewAlertsHeaderParser(), 799),
+			util.Prioritized(alertParser.NewAlertsParser(), 799),
+			util.Prioritized(alertParser.NewAlertsHeaderParser(), 799),
 		),
 	)
 	m.Renderer().AddOptions(
 		renderer.WithNodeRenderers(
-			util.Prioritized(details.NewAlertsHTMLRenderer(), 0),
-			util.Prioritized(summary.NewAlertsHeaderHTMLRendererWithIcons(e.Icons), 0),
-            util.Prioritized(body.NewAlertsBodyHTMLRenderer(), 0),
+			util.Prioritized(alertRenderer.NewAlertsHTMLRenderer(), 0),
+			util.Prioritized(alertRenderer.NewAlertsHeaderHTMLRendererWithIcons(e.Icons), 0),
+			util.Prioritized(alertRenderer.NewAlertsBodyHTMLRenderer(), 0),
 		),
 	)
 }

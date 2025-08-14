@@ -1,12 +1,12 @@
-package summary
+package parser
 
 import (
+	"github.com/ZMT-Creative/goldmark-gh-alerts/internal/ast"
+	"github.com/ZMT-Creative/goldmark-gh-alerts/internal/constants"
 	gast "github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/text"
 	"github.com/yuin/goldmark/util"
-
-	"github.com/ZMT-Creative/goldmark-gh-alerts/pkg/kinds"
 )
 
 type alertHeaderParser struct{}
@@ -18,13 +18,13 @@ func NewAlertsHeaderParser() parser.BlockParser {
 }
 
 func (b *alertHeaderParser) Trigger() []byte {
-	// end of Alerts begining
+	// end of Alerts beginning
 	return []byte{']'}
 }
 
 func (b *alertHeaderParser) Open(parent gast.Node, reader text.Reader, pc parser.Context) (gast.Node, parser.State) {
 	// this is always the first child of KindAlerts
-	if parent.ChildCount() != 0 || parent.Kind() != kinds.KindAlerts {
+	if parent.ChildCount() != 0 || parent.Kind() != constants.KindAlerts {
 		return nil, parser.NoChildren
 	}
 
@@ -52,7 +52,7 @@ func (b *alertHeaderParser) Open(parent gast.Node, reader text.Reader, pc parser
 
 	var titleLine string = string(line)
 
-	alert := NewAlertsHeader()
+	alert := ast.NewAlertsHeader()
 
 	if segment.Len() != 0 {
 		segments := text.Segments{}

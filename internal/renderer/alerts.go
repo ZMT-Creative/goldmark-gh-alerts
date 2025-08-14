@@ -1,16 +1,15 @@
-package details
+package renderer
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 
-	"github.com/ZMT-Creative/goldmark-gh-alerts/pkg/kinds"
+	"github.com/ZMT-Creative/goldmark-gh-alerts/internal/constants"
 	gast "github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/util"
-
-	"fmt"
 )
 
 type AlertsHTMLRenderer struct {
@@ -28,20 +27,20 @@ func NewAlertsHTMLRenderer(opts ...html.Option) renderer.NodeRenderer {
 }
 
 func (r *AlertsHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer) {
-	reg.Register(kinds.KindAlerts, r.renderAlerts)
+	reg.Register(constants.KindAlerts, r.renderAlerts)
 }
 
 func (r *AlertsHTMLRenderer) renderAlerts(w util.BufWriter, source []byte, node gast.Node, entering bool) (gast.WalkStatus, error) {
-    alertType := ""
+	alertType := ""
 	rawTitle := ""
-    if t, ok := node.AttributeString("kind"); ok {
-        if typeBytes, isBytes := t.([]uint8); isBytes {
-            alertType = strings.ToLower(string(typeBytes))
-        } else if typeStr, isStr := t.(string); isStr {
-            alertType = strings.ToLower(typeStr)
-        }
+	if t, ok := node.AttributeString("kind"); ok {
+		if typeBytes, isBytes := t.([]uint8); isBytes {
+			alertType = strings.ToLower(string(typeBytes))
+		} else if typeStr, isStr := t.(string); isStr {
+			alertType = strings.ToLower(typeStr)
+		}
 		// Check if the alertType is "noicon" or one of its variants
-		if kinds.IsNoIconKind(alertType) {
+		if constants.IsNoIconKind(alertType) {
 			// If the alertType is "noicon", we want to use the "title" if it exists
 			// If not, we can just use existing alertType as a fallback
 			if rt, ok := node.AttributeString("title"); ok {
@@ -67,12 +66,12 @@ func (r *AlertsHTMLRenderer) renderAlerts(w util.BufWriter, source []byte, node 
 				alertType = rawTitle
 			}
 		}
-    }
+	}
 
-    if entering {
-        fmt.Fprintf(w, `<div class="gh-alert gh-alert-%s" data-callout="%s">`, alertType, alertType)
-    } else {
-        w.WriteString("</div>\n")
-    }
-    return gast.WalkContinue, nil
+	if entering {
+		fmt.Fprintf(w, `<div class="gh-alert gh-alert-%s" data-callout="%s">`, alertType, alertType)
+	} else {
+		w.WriteString("</div>\n")
+	}
+	return gast.WalkContinue, nil
 }
