@@ -1,5 +1,7 @@
 package alerts
 
+// GhAlerts is a extension for the goldmark.
+
 import (
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/parser"
