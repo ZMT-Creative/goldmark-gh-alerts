@@ -57,20 +57,30 @@ over a few lines</p>
 >
 > second paragraph with *some* syntax
 `,
-
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Info</p></div><div class="gh-alert-body"><p>paragraph
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><p>paragraph
 over a few lines</p>
 <p>second paragraph with <em>some</em> syntax</p>
 </div></div>`},
 	{
+		desc: "Alerts with two paragraphs and a close request",
+		md: `> [!InFo]-
+> paragraph
+> over a few lines
+>
+> second paragraph with *some* syntax
+`,
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><p>paragraph
+over a few lines</p>
+<p>second paragraph with <em>some</em> syntax</p>
+</div></div>`},	{
 		desc: "Alerts without body",
 		md:   `> [!info] title`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>title</p></div></div>`},
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>title</p></div></div>`},
 	{
 		desc: "Alerts with list",
 		md: `> [!info]
 > - item`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Info</p></div><div class="gh-alert-body"><ul>
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><ul>
 <li>item</li>
 </ul>
 </div></div>`},
@@ -80,7 +90,7 @@ over a few lines</p>
 > With lots of possibilities:
 > - feature one
 > - feature two`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Info</p></div><div class="gh-alert-body"><p>With lots of possibilities:</p>
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><p>With lots of possibilities:</p>
 <ul>
 <li>feature one</li>
 <li>feature two</li>
@@ -94,7 +104,7 @@ over a few lines</p>
 `}, {
 		desc: "Syntax in summary",
 		md:   `>[!info] Title with *some* syntax [and](http://example.com) links`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Title with <em>some</em> syntax <a href="http://example.com">and</a> links</p></div></div>`}, {
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Title with <em>some</em> syntax <a href="http://example.com">and</a> links</p></div></div>`}, {
 		desc: "text before alert type",
 		md: `> abcd [!info]- This is not a alert
 `,

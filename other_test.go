@@ -14,7 +14,7 @@ var additionalTestCases = [...]TestCase{
 	{
 		desc: "Invalid alert type with numbers",
 		md:   `> [!info123] title`,
-		html: `<div class="gh-alert gh-alert-info123" data-callout="info123"><div class="gh-alert-title"><p>title</p></div></div>`,
+		html: `<div class="gh-alert gh-alert-info123" data-callout="info123"><div class="gh-alert-title"><p><svg></svg>title</p></div></div>`,
 	},
 	{
 		desc: "Alert type with special characters",
@@ -51,13 +51,13 @@ var additionalTestCases = [...]TestCase{
 	{
 		desc: "Closed alert with dash",
 		md:   `> [!warning]- This is a closed alert`,
-		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p>This is a closed alert</p></div></div>`,
+		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p><svg></svg>This is a closed alert</p></div></div>`,
 	},
 	{
 		desc: "Closed alert without title",
 		md: `> [!tip]-
 > content here`,
-		html: `<div class="gh-alert gh-alert-tip" data-callout="tip"><div class="gh-alert-title"><p>Tip</p></div><div class="gh-alert-body"><p>content here</p>
+		html: `<div class="gh-alert gh-alert-tip" data-callout="tip"><div class="gh-alert-title"><p><svg></svg>Tip</p></div><div class="gh-alert-body"><p>content here</p>
 </div></div>`,
 	},
 
@@ -65,12 +65,12 @@ var additionalTestCases = [...]TestCase{
 	{
 		desc: "Mixed case alert type",
 		md:   `> [!WaRnInG] Mixed case`,
-		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p>Mixed case</p></div></div>`,
+		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p><svg></svg>Mixed case</p></div></div>`,
 	},
 	{
 		desc: "Uppercase alert type",
 		md:   `> [!ERROR] Uppercase alert`,
-		html: `<div class="gh-alert gh-alert-error" data-callout="error"><div class="gh-alert-title"><p>Uppercase alert</p></div></div>`,
+		html: `<div class="gh-alert gh-alert-error" data-callout="error"><div class="gh-alert-title"><p><svg></svg>Uppercase alert</p></div></div>`,
 	},
 
 	// Complex content within alerts
@@ -94,7 +94,7 @@ var additionalTestCases = [...]TestCase{
 		desc: "Alert with inline code",
 		md: `> [!info]
 > Use the ` + "`alert`" + ` function`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Info</p></div><div class="gh-alert-body"><p>Use the <code>alert</code> function</p>
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><p>Use the <code>alert</code> function</p>
 </div></div>`,
 	},
 	{
@@ -104,7 +104,7 @@ var additionalTestCases = [...]TestCase{
 >   - nested item
 >   - another nested
 > - item 2`,
-		html: `<div class="gh-alert gh-alert-tip" data-callout="tip"><div class="gh-alert-title"><p>Tip</p></div><div class="gh-alert-body"><ul>
+		html: `<div class="gh-alert gh-alert-tip" data-callout="tip"><div class="gh-alert-title"><p><svg></svg>Tip</p></div><div class="gh-alert-body"><ul>
 <li>item 1
 <ul>
 <li>nested item</li>
@@ -121,7 +121,7 @@ var additionalTestCases = [...]TestCase{
 > 1. First step
 > 2. Second step
 > 3. Third step`,
-		html: `<div class="gh-alert gh-alert-important" data-callout="important"><div class="gh-alert-title"><p>Important</p></div><div class="gh-alert-body"><ol>
+		html: `<div class="gh-alert gh-alert-important" data-callout="important"><div class="gh-alert-title"><p><svg></svg>Important</p></div><div class="gh-alert-body"><ol>
 <li>First step</li>
 <li>Second step</li>
 <li>Third step</li>
@@ -148,7 +148,7 @@ with multiple lines</p>
 >
 >
 > Second paragraph after empty lines`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Info</p></div><div class="gh-alert-body"><p>First paragraph</p>
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><p>First paragraph</p>
 <p>Second paragraph after empty lines</p>
 </div></div>`,
 	},
@@ -159,7 +159,7 @@ with multiple lines</p>
 >
 >
 `,
-		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p>Warning</p></div><div class="gh-alert-body"><p>Content here</p>
+		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p><svg></svg>Warning</p></div><div class="gh-alert-body"><p>Content here</p>
 </div></div>`,
 	},
 
@@ -173,7 +173,7 @@ with multiple lines</p>
 		desc: "Alert with HTML in content",
 		md: `> [!warning]
 > Be careful with <strong>HTML</strong> & scripts`,
-		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p>Warning</p></div><div class="gh-alert-body"><p>Be careful with <!-- raw HTML omitted -->HTML<!-- raw HTML omitted --> &amp; scripts</p>
+		html: `<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p><svg></svg>Warning</p></div><div class="gh-alert-body"><p>Be careful with <!-- raw HTML omitted -->HTML<!-- raw HTML omitted --> &amp; scripts</p>
 </div></div>`,
 	},
 
@@ -181,13 +181,13 @@ with multiple lines</p>
 	{
 		desc: "Alert with unicode in title",
 		md:   `> [!info] Título con acentos é çharacters 中文`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Título con acentos é çharacters 中文</p></div></div>`,
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Título con acentos é çharacters 中文</p></div></div>`,
 	},
 	{
 		desc: "Alert with emoji",
 		md: `> [!tip] 🚀 Rocket tip
 > Use emojis sparingly 😊`,
-		html: `<div class="gh-alert gh-alert-tip" data-callout="tip"><div class="gh-alert-title"><p>🚀 Rocket tip</p></div><div class="gh-alert-body"><p>Use emojis sparingly 😊</p>
+		html: `<div class="gh-alert gh-alert-tip" data-callout="tip"><div class="gh-alert-title"><p><svg></svg>🚀 Rocket tip</p></div><div class="gh-alert-body"><p>Use emojis sparingly 😊</p>
 </div></div>`,
 	},
 
@@ -201,7 +201,7 @@ with multiple lines</p>
 		desc: "Alert with very long paragraph",
 		md: `> [!info]
 > This is a very long paragraph that contains lots of text and should wrap properly in the alert body. It includes multiple sentences and should demonstrate that the alert can handle substantial amounts of content without any issues. The formatting should remain intact and the HTML output should be properly structured.`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Info</p></div><div class="gh-alert-body"><p>This is a very long paragraph that contains lots of text and should wrap properly in the alert body. It includes multiple sentences and should demonstrate that the alert can handle substantial amounts of content without any issues. The formatting should remain intact and the HTML output should be properly structured.</p>
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><p>This is a very long paragraph that contains lots of text and should wrap properly in the alert body. It includes multiple sentences and should demonstrate that the alert can handle substantial amounts of content without any issues. The formatting should remain intact and the HTML output should be properly structured.</p>
 </div></div>`,
 	},
 
@@ -225,14 +225,14 @@ Double tab indent</p>
 		desc: "Caution alert type",
 		md: `> [!caution]
 > Be very careful here`,
-		html: `<div class="gh-alert gh-alert-caution" data-callout="caution"><div class="gh-alert-title"><p>Caution</p></div><div class="gh-alert-body"><p>Be very careful here</p>
+		html: `<div class="gh-alert gh-alert-caution" data-callout="caution"><div class="gh-alert-title"><p><svg></svg>Caution</p></div><div class="gh-alert-body"><p>Be very careful here</p>
 </div></div>`,
 	},
 	{
 		desc: "Important alert type",
 		md: `> [!important] Critical information
 > This is very important`,
-		html: `<div class="gh-alert gh-alert-important" data-callout="important"><div class="gh-alert-title"><p>Critical information</p></div><div class="gh-alert-body"><p>This is very important</p>
+		html: `<div class="gh-alert gh-alert-important" data-callout="important"><div class="gh-alert-title"><p><svg></svg>Critical information</p></div><div class="gh-alert-body"><p>This is very important</p>
 </div></div>`,
 	},
 
@@ -244,9 +244,9 @@ Double tab indent</p>
 
 > [!warning]
 > Second alert`,
-		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p>Info</p></div><div class="gh-alert-body"><p>First alert</p>
+		html: `<div class="gh-alert gh-alert-info" data-callout="info"><div class="gh-alert-title"><p><svg></svg>Info</p></div><div class="gh-alert-body"><p>First alert</p>
 </div></div>
-<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p>Warning</p></div><div class="gh-alert-body"><p>Second alert</p>
+<div class="gh-alert gh-alert-warning" data-callout="warning"><div class="gh-alert-title"><p><svg></svg>Warning</p></div><div class="gh-alert-body"><p>Second alert</p>
 </div></div>`,
 	},
 }
@@ -275,16 +275,33 @@ var iconTestCases = [...]TestCase{
 </div></div>`,
 	},
 	{
-		desc: "Alert without icon configured",
-		md: `> [!error]
+		desc: "Alert using 'noicon' to suppress icon",
+		md: `> [!noicon] Error
 > No icon for this type`,
 		html: `<div class="gh-alert gh-alert-error" data-callout="error"><div class="gh-alert-title"><p>Error</p></div><div class="gh-alert-body"><p>No icon for this type</p>
+</div></div>`,
+	},
+	{
+		desc: "Alert using 'noicon' to suppress icon with complex title formatting",
+		md: `> [!noicon] Error **BAD* [text](#link) ` + "`some code`" + `
+> No icon for this type`,
+		html: `<div class="gh-alert gh-alert-error-bad" data-callout="error-bad"><div class="gh-alert-title"><p>Error *<em>BAD</em> <a href="#link">text</a> <code>some code</code></p></div><div class="gh-alert-body"><p>No icon for this type</p>
 </div></div>`,
 	},
 	{
 		desc: "Custom title with icon",
 		md:   `> [!tip] Custom tip title`,
 		html: `<div class="gh-alert gh-alert-tip" data-callout="tip"><div class="gh-alert-title"><p>💡Custom tip title</p></div></div>`,
+	},
+	{
+		desc: "Unsupported alert type 'cite' should use 'note' icon",
+		md:   `> [!cite]`,
+		html: `<div class="gh-alert gh-alert-cite" data-callout="cite"><div class="gh-alert-title"><p>📝Cite</p></div></div>`,
+	},
+	{
+		desc: "Unsupported alert type 'cite' with 'Quote' title should use 'note' icon",
+		md:   `> [!cite] Quote`,
+		html: `<div class="gh-alert gh-alert-cite" data-callout="cite"><div class="gh-alert-title"><p>📝Quote</p></div></div>`,
 	},
 }
 
