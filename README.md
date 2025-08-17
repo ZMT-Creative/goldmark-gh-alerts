@@ -1,12 +1,15 @@
-# Goldmark GitHub Alerts and Obsidian Callouts
+# Goldmark GitHub Alerts
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/ZMT-Creative/goldmark-gh-alerts.svg)](https://pkg.go.dev/github.com/ZMT-Creative/goldmark-gh-alerts)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/ZMT-Creative/goldmark-gh-alerts)
-![GitHub License](https://img.shields.io/github/license/ZMT-Creative/goldmark-gh-alerts)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/ZMT-Creative/goldmark-gh-alerts)
-![GitHub Tag](https://img.shields.io/github/v/tag/ZMT-Creative/goldmark-gh-alerts?include_prereleases&sort=semver)
+> [!WARNING]
+>
+> **DEPRECATED:** This extension is deprecated and should not be used. A newer extension named
+> [`gm-alert-callouts`](https://github.com/ZMT-Creative/gm-alert-callouts) (*based on the same
+> underlying code*) should be used instead. This new package is already available on
+> [`pkg.dev.go`](https://pkg.go.dev/github.com/ZMT-Creative/gm-alert-callouts).
 
-The `goldmark-gh-alerts` package is an extension for the
+## Legacy Information
+
+This `goldmark-gh-alerts` package is an extension for the
 [Goldmark](http://github.com/yuin/goldmark) Markdown Rendering Package that allows you to use
 [GitHub alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts).
 It also supports Obsidian-style callouts, although the Open/Close feature of Obsidian Callouts is
@@ -41,7 +44,7 @@ standalone Markdown Reader application.
 If you want to use this package in your own project feel free, but it is recommended that you
 should either pin a commit or fork since the API is not guarantee to be stable at this time.
 
-## Changes from Original Extension
+## Changes from the Original Extension by Thiago Okada
 
 This modified version of the GitHub Alerts extension adds `<div>` wrappers around the alert
 **Title** text and the alert **Body** text. This allows more detailed styling with CSS. A new
