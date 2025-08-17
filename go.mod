@@ -2,7 +2,7 @@ module github.com/ZMT-Creative/goldmark-gh-alerts
 
 go 1.23.0
 
-toolchain go1.24.5
+retract [v0.1.0, v0.2.2]
 
 require github.com/yuin/goldmark v1.4.6
 
