@@ -1,13 +1,16 @@
-# Goldmark GitHub Alerts
+# Goldmark Alerts
 
 > [!WARNING]
 >
-> **DEPRECATED:** This extension is deprecated and should not be used. A newer extension named
+> **DEPRECATED:** This extension is deprecated and should not be used. There will be no updates
+> beyond this version (v0.2.3).
+>
+> A newer extension named
 > [`gm-alert-callouts`](https://github.com/ZMT-Creative/gm-alert-callouts) (*based on the same
 > underlying code*) should be used instead. This new package is already available on
 > [`pkg.dev.go`](https://pkg.go.dev/github.com/ZMT-Creative/gm-alert-callouts).
 
-## Legacy Information
+## Legacy Information About This Project
 
 This `goldmark-gh-alerts` package is an extension for the
 [Goldmark](http://github.com/yuin/goldmark) Markdown Rendering Package that allows you to use
@@ -24,13 +27,6 @@ not yet implemented.
 > application can render (*e.g., a Unicode glyph or an HTML entity code*).
 
 ## State of the Project
-
-> [!WARNING]
-> This project, under this name (*`github.com/ZMT-Creative/goldmark-gh-alerts`*), will not be
-> supported beyond the `0.2.2` version. This project will remain available on GitHub, but will be
-> removed from `pkg.go.dev` (*eventually*). We are working on a revision of this package with more
-> features and will be creating a new project (*likely named
-> `github.com/ZMT-Creative/gm-alert-callouts`*).
 
 This ZMT-Creative project is a hard fork of:
 [thiagokokada/goldmark-gh-alerts](https://github.com/thiagokokada/goldmark-gh-alerts).
